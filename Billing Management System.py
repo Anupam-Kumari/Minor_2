@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-# =======xxxxxxxxxxxx Created by Mohak admin of CODING.HEAVEN xxxxxxxxxxxx==================
-
-
-
-#=========== Importing Suitable Libraries =========================
 from tkinter import *
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
@@ -12,9 +6,7 @@ from tkinter import messagebox
 import random
 from datetime import datetime
 from tkinter import filedialog
-#=================== End ===========================================
-
-#==================== Functions code starts here ======================
+# Imported all the required packages
 
 # ==========================  Total Button Code ==========================
 def total_bills():
