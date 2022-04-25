@@ -6,7 +6,7 @@ from tkinter import messagebox
 import random
 from datetime import datetime
 from tkinter import filedialog
-# Imported all the required packages
+# Imported all the packages required
 
 # ==========================  Total Button Code ==========================
 def total_bills():
