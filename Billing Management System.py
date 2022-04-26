@@ -6,13 +6,10 @@ from tkinter import messagebox
 import random
 from datetime import datetime
 from tkinter import filedialog
-# Imported all the packages required
 
-# ==========================  Total Button Code ==========================
 def total_bills():
 
-        # ============ Drinks Items price ===============
-        lassi_price = 50
+        lassi_price = 50                       #Drinks Items price
         coffee_price = 20
         tea_price = 10
         juice_price = 30
@@ -20,8 +17,8 @@ def total_bills():
         milk_price = 20
         shikanji_price = 15
         redbull_price = 150
-        # ============== Foods Items Price ==================
-        roti_price = 5
+
+        roti_price = 5                        #Foods Items Price
         dal_makhni_price = 120
         mutter_panner_price = 150
         paratha_price = 40
@@ -30,9 +27,7 @@ def total_bills():
         veg_biryani_price = 120
         rice_price = 50
 
-
-        # ============Drinks Item quantity ===================
-        lassi_q = lassi_qty.get()
+        lassi_q = lassi_qty.get()             #Drinks Item quantity
         coffee_q = coffee_qty.get()
         tea_q = tea_qty.get()
         juice_q = juice_qty.get()
@@ -41,8 +36,7 @@ def total_bills():
         shikanji_q = shikanji_qty.get()
         redbull_q = redbull_qty.get()
 
-        # ============= Foods Item quantity ======================
-        roti_q = roti_qty.get()
+        roti_q = roti_qty.get()                #Foods Item quantity
         dal_makhni_q = dal_makhni_qty.get()
         mutter_panner_q = mutter_panner_qty.get()
         paratha_q = paratha_qty.get()
@@ -51,9 +45,7 @@ def total_bills():
         veg_biryani_q = veg_biryani_qty.get()
         rice_q = rice_qty.get()
 
-
-        # ================ Drinks Items Validation ====================
-        if lassi_var.get() == 0:
+        if lassi_var.get() == 0:                #Drinks Items Validation
                 lassi_q = 0
         elif lassi_var.get() == 1 and lassi_qty.get() == "":
                 messagebox.showerror("error","please fill the lassi quantity")
@@ -101,9 +93,7 @@ def total_bills():
                 messagebox.showerror("error","please fill the redbull quantity")
                 redbull_q = 0
 
-        
-        # ================ Foods Items Validation ====================
-        if roti_var.get() == 0:
+        if roti_var.get() == 0:                   #Foods Items Validation
                 roti_q = 0
         elif roti_var.get() == 1 and roti_qty.get() == "":
                 messagebox.showerror("error","please fill the Roti quantity")
@@ -150,10 +140,8 @@ def total_bills():
         elif rice_var.get() == 1 and rice_qty.get() == "":
                 messagebox.showerror("error","please fill the Rice quantity")
                 rice_q = 0
-        
-        
-        # ============ Total Drinks Items Price ===================
-        total_lassi_price = lassi_price * int(lassi_q)
+
+        total_lassi_price = lassi_price * int(lassi_q)        #Total Drinks Items Price
         total_coffee_price = coffee_price * int(coffee_q)
         total_tea_price = tea_price * int(tea_q)
         total_juice_price = juice_price * int(juice_q)
@@ -162,7 +150,7 @@ def total_bills():
         total_shikanji_price = shikanji_price * int(shikanji_q)
         total_redbull_price = redbull_price * int(redbull_q)
 
-        # ============ Total Drinks cost ===================
+                                                            #Total Drinks cost
         total_drinks_cost = total_lassi_price + total_coffee_price + total_tea_price + total_juice_price + total_shakes_price + total_milk_price + total_shikanji_price + total_redbull_price
 
         if drinks_cost.get() != "":
@@ -171,9 +159,7 @@ def total_bills():
         else:
                 drinks_cost.insert("end",total_drinks_cost)
 
-        
-        # ============ Total Foods Items Price ===================
-        total_roti_price = roti_price * int(roti_q)
+        total_roti_price = roti_price * int(roti_q)       #Total Foods Items Price
         total_dal_makhni_price = dal_makhni_price * int(dal_makhni_q)
         total_mutter_panner_price = mutter_panner_price * int(mutter_panner_q)
         total_paratha_price = paratha_price * int(paratha_q)
@@ -182,7 +168,7 @@ def total_bills():
         total_veg_biryani_price = veg_biryani_price * int(veg_biryani_q)
         total_rice_price = rice_price * int(rice_q)
 
-         # ============ Total Foods cost ===================
+                                                                #Total Foods cost
         total_foods_cost = total_roti_price + total_dal_makhni_price + total_mutter_panner_price + total_paratha_price + total_mix_veg_price + total_omelete_price + total_veg_biryani_price + total_rice_price
 
         if foods_cost.get() != "":
@@ -191,13 +177,13 @@ def total_bills():
         else:
                 foods_cost.insert("end",total_foods_cost)
 
-        
+
         if service_charge_cost.get() != "":
                 service_charge_cost.delete(0,"end")
                 service_charge_cost.insert(0,"10")
         else:
                 service_charge_cost.insert(0,"10")
-        
+
         fc =  int(foods_cost.get())
         dc = int(drinks_cost.get())
 
@@ -211,7 +197,7 @@ def total_bills():
         else:
                 paid_tax_cost.insert(0,total_paid_tax)
 
-        
+
         total_sub_cost = fc+dc+int(service_charge_cost.get())
 
         if sub_total_cost.get() != "":
@@ -227,37 +213,25 @@ def total_bills():
         else:
                 total_cost_cost.insert(0,float(total_sub_cost + total_paid_tax))
 
-        
-
-         # =====================  Total Bill Receipt ===========================
-        date = datetime.now().date()
+        date = datetime.now().date()                   #Total Bill Receipt
         if bill_details.get(1.0,"end") != "":
                 bill_details.delete(1.0,"end")
                 bill_details.insert(1.0,f" Billno-{random.randint(100,1000)}\t{date}  =====================  Items(q) \t \tAmount  ===================== \n {'Lassi ('+str(lassi_q) + ')' + '         ' + str(int(lassi_q) * lassi_price) + '   '  if lassi_var.get() == 1 else''}{'coffee ('+str(coffee_q) + ')' + '        ' + str(int(coffee_q) * coffee_price) + '  '  if coffee_var.get() == 1 else ''}{ ' tea ('+str(tea_q) + ')' + '           ' + str(int(tea_q) * tea_price) + '  '  if tea_var.get() == 1 else''}{' juice ('+str(juice_q) + ')' + '         ' + str(int(juice_q) * juice_price) + '   '  if juice_var.get() == 1 else''}{'shakes('+str(shakes_q) + ')' + '         ' + str(int(shakes_q) * shakes_price) + '   '  if shakes_var.get() == 1 else''}{'milk('+str(milk_q) + ')' + '           ' + str(int(milk_q) * milk_price) + '   '  if milk_var.get() == 1 else''}{'shikanji('+str(shikanji_q) + ')' + '     ' + str(int(shikanji_q) * shikanji_price) + '     '  if shikanji_var.get() == 1 else''}{'redbull('+str(redbull_q) + ')' + '     ' + str(int(redbull_q) * redbull_price) + '     '  if redbull_var.get() == 1 else''}{'roti('+str(roti_q) + ')' + '          ' + str(int(roti_q) * roti_price) + '     '  if roti_var.get() == 1 else''}{'dal makhni('+str(dal_makhni_q) + ')' + '     ' + str(int(dal_makhni_q) * dal_makhni_price) + '  '  if dal_makhni_var.get() == 1 else''}{'mutter panner('+str(mutter_panner_q) + ')' + '  ' + str(int(mutter_panner_q) * mutter_panner_price) + '  '  if mutter_panner_var.get() == 1 else''}{'paratha('+str(paratha_q) + ')' + '        ' + str(int(paratha_q) * paratha_price) + '   '  if paratha_var.get() == 1 else''}{'mix veg('+str(mix_veg_q) + ')' + '        ' + str(int(mix_veg_q) * mix_veg_price) + '   '  if mix_veg_var.get() == 1 else''}{'omelete('+str(omelete_q) + ')' + '        ' + str(int(omelete_q) * omelete_price) + '   '  if omelete_var.get() == 1 else''}{'veg biryani('+str(veg_biryani_q) + ')' + '    ' + str(int(veg_biryani_q) * veg_biryani_price) + '  '  if veg_biryani_var.get() == 1 else''}{'rice('+str(rice_q) + ')' + '          ' + str(int(rice_q) * rice_price) + '    '  if rice_var.get() == 1 else''}service charge    {service_charge_cost.get()}\n tax paid        {paid_tax_cost.get()}\n ===================== \n total          {total_cost_cost.get()}\n =====================")
-        
-                # ================== End  =============================
-        
 
-# ========= Save button Code ================
-
-def save():
+def save():                                           #Save button Code
         root.filename = filedialog.asksaveasfile(mode="w",defaultextension='.txt')
         if root.filename is None:
                 return
         file_save =  str(bill_details.get(1.0,END))
         root.filename.write(file_save)
         root.filename.close()
-        
-# =========== End =====================
 
-
-# ============= Drinks checkbutton validation =================
-def lassi_chk():
+def lassi_chk():                                      #Drinks checkbutton validation
         if lassi_var.get() == 1:
                 lassi_qty['state'] = "normal"
                 lassi_qty['bg'] = '#248aa2'
                 lassi_qty['fg'] = "white"
-                
+
         else:
                 lassi_qty['state'] = "disabled"
 
@@ -317,18 +291,13 @@ def redbull_chk():
                 redbull_qty['fg'] = "white"
         else:
                 redbull_qty['state'] = "disabled"
-# ================== end==================
 
-
-
-# === Foods checkbutton validation ================
-
-def roti_chk():
+def roti_chk():                                       #Foods checkbutton validation
         if roti_var.get() == 1:
                 roti_qty['state'] = "normal"
                 roti_qty['bg'] = '#248aa2'
                 roti_qty['fg'] = "white"
-                
+
         else:
                 roti_qty['state'] = "disabled"
 
@@ -387,19 +356,13 @@ def rice_chk():
                 rice_qty['fg'] = "white"
         else:
                 rice_qty['state'] = "disabled"
-#============== end ==========================
 
-
-# ===== Calculator code ================
-
-def nine():
+def nine():                                            #Calculator code
         if 'error' in result.get() or '=' in result.get():
                 result.delete(0,"end")
                 result.insert("end","9")
         else:
                 result.insert("end","9")
-                
-            
 
 def eight():
         if 'error' in result.get() or '=' in result.get():
@@ -513,24 +476,21 @@ def equal():
 def clear():
         result.delete(0,"end")
 
-#========== end ========================
-
-# ====== Send button code ====================
-def Send():
+def Send():                                         #Send button code
         root = tk.Tk()
         root.geometry('300x400')
         root['bg']="white"
 
         frame4 = Frame(root,width=300,height=60,relief=RIDGE,borderwidth=5,bg='#248aa2',highlightbackground="white", highlightcolor="white", highlightthickness=2)
         frame4.place(x=0,y=0)
-                
+
         l2 = Label(frame4,text="Send Bill",font=('roboto',22,'bold'),bg='#248aa2',fg="#ffffff")
         l2.place(x=85,y=1)
 
         frame5 = Frame(root,width=300,height=340,relief=RIDGE,borderwidth=5,bg='#248aa2',highlightbackground="white", highlightcolor="white", highlightthickness=2)
         frame5.place(x=0,y=55)
 
-        innerframe5 = Frame(frame5,width=285,height=325,relief=RIDGE,borderwidth=3,bg='#248aa2',highlightbackground="white", highlightcolor="white", highlightthickness=2)        
+        innerframe5 = Frame(frame5,width=285,height=325,relief=RIDGE,borderwidth=3,bg='#248aa2',highlightbackground="white", highlightcolor="white", highlightthickness=2)
         innerframe5.place(x=0,y=0)
 
         l3 = LabelFrame(innerframe5,text="Send Bill Through SMS",width=270,height=310,borderwidth=3,font=('verdana',10,'bold'),fg='#248aa2',relief=RIDGE,highlightbackground="white", highlightcolor="white", highlightthickness=2)
@@ -541,12 +501,12 @@ def Send():
 
         number = Entry(innerframe5,width=30,borderwidth=2)
         number.place(x=40,y=70)
-        
+
         l5 = Label(innerframe5,text="Bill Details",font=('verdana',10,'bold'))
         l5.place(x=40,y=100)
 
         b_detail = ScrolledText(innerframe5,width=23,height=7,relief=RIDGE,borderwidth=3)
-        b_detail.place(x=40,y=130) 
+        b_detail.place(x=40,y=130)
 
         b_detail.insert(1.0,bill_details.get(1.0,END))
 
@@ -569,32 +529,25 @@ def Send():
                                 'cache-control': "no-cache"
                                 }
                         requests.request("GET", url, headers=headers, params=querystring)
-                        
-                
+
+
                         messagebox.showinfo("Send SMS",'Bill has been send to your successfully')
 
-                
+
         send_msg = Button(innerframe5,text="Send Bill",relief=RAISED,borderwidth=2,font=('verdana',8,'bold'),bg='#248aa2',fg="white",padx=20,command=send_bill)
         send_msg.place(x=100,y=255)
 
         root.mainloop()
 
-# ============ end =====================
-
-
-# ==== Exit button code =================
-def exit():
+def exit():                                        #Exit button code
         message = messagebox.askquestion('Notepad',"Do you want to exit the application")
         if message == "yes":
                 root.destroy()
         else:
                 "return"
-# ======== end =======================
 
-
-# ==== clear button code ============
-def cleared_bill():
-        # ========== Drinks ===========
+def cleared_bill():                                     #clear button code
+        #For Drinks
         lassi_qty.delete(0,'end')
         lassi.deselect()
         lassi_qty['state'] = "disabled"
@@ -619,7 +572,7 @@ def cleared_bill():
         redbull_qty.delete(0,'end')
         redbull.deselect()
         redbull_qty['state'] = "disabled"
-        # ========== Drinks ===========
+        #For Food
         roti_qty.delete(0,'end')
         roti.deselect()
         roti_qty['state'] = "disabled"
@@ -644,42 +597,34 @@ def cleared_bill():
         rice_qty.delete(0,'end')
         rice.deselect()
         rice_qty['state'] = "disabled"
-        # ========== Total cost ===========
+        #Total cost
         drinks_cost.delete(0,'end')
         foods_cost.delete(0,'end')
         service_charge_cost.delete(0,'end')
         paid_tax_cost.delete(0,'end')
         sub_total_cost.delete(0,'end')
         total_cost_cost.delete(0,'end')
-        # ========== Bill Details ============
+        #Bill Details
         bill_details.delete(1.0,'end')
 
-#======== End =============
-
-
-
-
-
-# ===== Main Window code =================
+#Main Window code
 root = tk.Tk()
 root.geometry('650x400')
 root.maxsize(650,390)
 root.minsize(650,390)
-root.title("Restaurent Management System")
+root.title("Billing Management System")
 
 frame = Frame(root,width=650,height=70,relief=RIDGE,borderwidth=5,bg='#248aa2')
 frame.place(x=0,y=0)
 
-l1 = Label(frame,text="Restaurent Management System",font=('roboto',30,'bold'),bg='#248aa2',fg="#ffffff")
-l1.place(x=10,y=4)
+l1 = Label(frame,text="Billing Management System",font=('roboto',30,'bold'),bg='#248aa2',fg="#ffffff")
+l1.place(x=40,y=4)
 
-
-# ======================================================================
 
 frame1= Frame(root,width=450,height=230,relief=RIDGE,borderwidth=5,bg='#248aa2')
 frame1.place(x=0,y=70)
 
-innerframe1 = Frame(frame1,width=150,height=220,relief=RIDGE,borderwidth=3,bg='#248aa2',highlightbackground="white", highlightcolor="white", highlightthickness=2)        
+innerframe1 = Frame(frame1,width=150,height=220,relief=RIDGE,borderwidth=3,bg='#248aa2',highlightbackground="white", highlightcolor="white", highlightthickness=2)
 innerframe1.place(x=0,y=0)
 
 drinks  = LabelFrame(innerframe1,text="Drinks",width=135,height=205,borderwidth=3,font=('verdana',10,'bold'),fg='#248aa2',relief=RIDGE,highlightbackground="white", highlightcolor="white", highlightthickness=2)
@@ -739,7 +684,7 @@ redbull_qty = Entry(drinks,width=7,borderwidth=4,relief=SUNKEN,state="disabled")
 redbull_qty.place(x=74,y=154)
 
 
-innerframe2 = Frame(frame1,width=290,height=220,relief=RIDGE,borderwidth=3,bg='#248aa2',highlightbackground="white", highlightcolor="white", highlightthickness=2)        
+innerframe2 = Frame(frame1,width=290,height=220,relief=RIDGE,borderwidth=3,bg='#248aa2',highlightbackground="white", highlightcolor="white", highlightthickness=2)
 innerframe2.place(x=151,y=0)
 
 
@@ -795,15 +740,10 @@ rice_qty = Entry(foods,width=15,borderwidth=4,relief=SUNKEN,state="disabled")
 rice_qty.place(x=140,y=154)
 
 
-
-
-
-# =================================================================
-
 frame2= Frame(root,width=450,height=90,relief=RIDGE,borderwidth=5,bg='#248aa2')
 frame2.place(x=0,y=300)
 
-innerframe3 = Frame(frame2,width=440,height=80,relief=RIDGE,borderwidth=3,bg='#248aa2',highlightbackground="white", highlightcolor="white", highlightthickness=2)        
+innerframe3 = Frame(frame2,width=440,height=80,relief=RIDGE,borderwidth=3,bg='#248aa2',highlightbackground="white", highlightcolor="white", highlightthickness=2)
 innerframe3.place(x=0,y=0)
 
 
@@ -843,7 +783,7 @@ total_cost_cost.place(x=330,y=44)
 frame3= Frame(root,width=200,height=320,relief=RIDGE,borderwidth=5,bg='#248aa2')
 frame3.place(x=450,y=70)
 
-innerframe4 = Frame(frame3,width=190,height=310,relief=RIDGE,borderwidth=3,bg='#248aa2',highlightbackground="white", highlightcolor="white", highlightthickness=2)        
+innerframe4 = Frame(frame3,width=190,height=310,relief=RIDGE,borderwidth=3,bg='#248aa2',highlightbackground="white", highlightcolor="white", highlightthickness=2)
 innerframe4.place(x=0,y=0)
 
 
@@ -908,7 +848,3 @@ clr = Button(innerframe4,text="C",relief=RAISED,borderwidth=2,font=('verdana',8,
 clr.place(x=160,y=275)
 
 root.mainloop()
-
-
-# ==============xxxxxxxxxxxxxxxxxxxxEnd code Herexxxxxxxxxxxxxxxx================== 
-
